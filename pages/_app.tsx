@@ -9,7 +9,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <title>Cyborg Checklist re:tune</title>
       </Head>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </Provider>
   );
 }

@@ -2,7 +2,6 @@ import { Inter } from "next/font/google";
 import MainHeader from "@/components/MainHeader";
 import Todos from "@/components/todo/Todos";
 import ChatBot from "@/components/chatbot/ChatBot";
-import { useSelector } from "react-redux";
 import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });

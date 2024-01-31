@@ -5,6 +5,7 @@ import {
   UPDATE_TODO_PRIORITY,
   UPDTAE_STATUS,
 } from "./action-identiers";
+import { Todo } from "./todoReducer";
 
 export function Add(text: string) {
   return {
@@ -36,10 +37,7 @@ export function UpdateContent(id: string, newContent: string) {
   };
 }
 
-export function UpdateTodoPriority(
-  id: string,
-  priority: "high" | "medium" | "low"
-) {
+export function UpdateTodoPriority(id: string, priority: Todo["priority"]) {
   return {
     type: UPDATE_TODO_PRIORITY,
     payload: {
