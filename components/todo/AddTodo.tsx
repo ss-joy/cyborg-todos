@@ -3,15 +3,18 @@ import { Textarea } from "../ui/textarea";
 import { NotebookPenIcon, PlusCircle } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { Add } from "@/redux/todos/action-creators";
+import { Add as AddNotification } from "@/redux/notifications/action-creators";
 
 function AddTodo() {
   const [text, setText] = useState<string>("");
   const dispatch = useDispatch();
+
   function handleChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
     setText(e.target.value);
   }
   function handleSubmitTodo() {
     dispatch(Add(text));
+    dispatch(AddNotification());
   }
   return (
     <div className="relative">
@@ -24,7 +27,7 @@ function AddTodo() {
         onChange={handleChange}
         value={text}
         placeholder="enter your todo here"
-        className="pl-12  py-4"
+        className="pl-12 py-4"
       />
     </div>
   );

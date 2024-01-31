@@ -5,19 +5,16 @@ import { useDispatch } from "react-redux";
 type TodoPriorityProps = { id: string; priority: "high" | "medium" | "low" };
 function TodoPriority({ priority, id }: TodoPriorityProps) {
   const dispatch = useDispatch();
-  function setPriorityHigh() {
-    dispatch(UpdateTodoPriority(id, "high"));
-  }
-  function setPriorityLow() {
-    dispatch(UpdateTodoPriority(id, "low"));
-  }
-  function setPriorityMedium() {
-    dispatch(UpdateTodoPriority(id, "medium"));
+
+  function setPriority(id: string, priority: TodoPriorityProps["priority"]) {
+    dispatch(UpdateTodoPriority(id, priority));
   }
   return (
     <p className="flex">
       <span
-        onClick={setPriorityHigh}
+        onClick={() => {
+          setPriority(id, "high");
+        }}
         className={cn(
           "block p-1 px-1 font-bold text-center w-[100px] rounded text-red-700 hover:cursor-pointer",
           {
@@ -28,7 +25,9 @@ function TodoPriority({ priority, id }: TodoPriorityProps) {
         high
       </span>
       <span
-        onClick={setPriorityLow}
+        onClick={() => {
+          setPriority(id, "low");
+        }}
         className={cn(
           "block p-1 px-1 font-bold text-center w-[100px] rounded text-green-700 hover:cursor-pointer ",
           {
@@ -39,7 +38,9 @@ function TodoPriority({ priority, id }: TodoPriorityProps) {
         low
       </span>
       <span
-        onClick={setPriorityMedium}
+        onClick={() => {
+          setPriority(id, "medium");
+        }}
         className={cn(
           "block p-1 px-1 font-bold text-center w-[100px] rounded text-yellow-700 hover:cursor-pointer",
           {

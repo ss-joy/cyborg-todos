@@ -1,5 +1,5 @@
 export const ADD = "todo/added";
 export const DELETE = "todo/deleted";
-export const UPDTAESTATUS = "todo/statusUpdated";
-export const UPDATECONTENT = "todo/contentUpdated";
-export const UPDATETODOPRIORITY = "todo/updateTodoPriority";
+export const UPDTAE_STATUS = "todo/statusUpdated";
+export const UPDATE_CONTENT = "todo/contentUpdated";
+export const UPDATE_TODO_PRIORITY = "todo/updateTodoPriority";

@@ -1,15 +1,21 @@
-import { ADD, UPDATETODOPRIORITY, UPDTAESTATUS } from "./action-identiers";
+import {
+  ADD,
+  DELETE,
+  UPDATE_CONTENT,
+  UPDATE_TODO_PRIORITY,
+  UPDTAE_STATUS,
+} from "./action-identiers";
 import { v4 } from "uuid";
-export type Todos = {
+export type Todo = {
   id: string;
   text: string;
   priority: "high" | "medium" | "low";
   status: "pending" | "completed";
 };
-type initialStateType = {
-  todos: Todos[];
+type StateType = {
+  todos: Todo[];
 };
-const initialState: initialStateType = {
+const initialState: StateType = {
   todos: [
     {
       id: "asdasdasdasdadsaodas8ds",
@@ -31,9 +37,10 @@ const initialState: initialStateType = {
     },
   ],
 };
-export function todoReducer(state: initialStateType = initialState, action) {
+//@ts-ignore
+export function todoReducer(state: StateType = initialState, action) {
   switch (action.type) {
-    case UPDTAESTATUS:
+    case UPDTAE_STATUS:
       const newTodos = state.todos.map((todo) => {
         if (action.payload !== todo.id) {
           return { ...todo };
@@ -47,7 +54,7 @@ export function todoReducer(state: initialStateType = initialState, action) {
       return { ...state, todos: newTodos };
 
     case ADD:
-      const createdTodo: Todos = {
+      const createdTodo: Todo = {
         id: v4(),
         priority: "medium",
         status: "pending",
@@ -61,8 +68,7 @@ export function todoReducer(state: initialStateType = initialState, action) {
         ...state,
         todos: updatedTodos,
       };
-    case UPDATETODOPRIORITY:
-      console.log(action.payload);
+    case UPDATE_TODO_PRIORITY:
       const updatedTodoss = state.todos.map((todo) => {
         if (action.payload.id !== todo.id) {
           return { ...todo };
@@ -73,12 +79,30 @@ export function todoReducer(state: initialStateType = initialState, action) {
           };
         }
       });
-      // console.log("ups", updatedTodoss);
       return {
         ...state,
         todos: updatedTodoss,
       };
-
+    case DELETE:
+      const newTodosss = state.todos.filter((todo) => {
+        return action.payload !== todo.id;
+      });
+      return {
+        ...state,
+        todos: newTodosss,
+      };
+    case UPDATE_CONTENT:
+      const updatedTodossss = state.todos.map((todo) => {
+        if (action.payload.id !== todo.id) {
+          return { ...todo };
+        } else if (action.payload.id === todo.id) {
+          return { ...todo, text: action.payload.newContent };
+        }
+      });
+      return {
+        ...state,
+        todos: updatedTodossss,
+      };
     default:
       return state;
   }

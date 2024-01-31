@@ -1,9 +1,9 @@
 import {
   ADD,
   DELETE,
-  UPDATECONTENT,
-  UPDATETODOPRIORITY,
-  UPDTAESTATUS,
+  UPDATE_CONTENT,
+  UPDATE_TODO_PRIORITY,
+  UPDTAE_STATUS,
 } from "./action-identiers";
 
 export function Add(text: string) {
@@ -21,15 +21,18 @@ export function DeleteTodo(todoId: string) {
 }
 export function UpdateTodoStatus(id: string) {
   return {
-    type: UPDTAESTATUS,
+    type: UPDTAE_STATUS,
     payload: id,
   };
 }
 
-export function UpdateContent(newContent: string) {
+export function UpdateContent(id: string, newContent: string) {
   return {
-    type: UPDATECONTENT,
-    payload: newContent,
+    type: UPDATE_CONTENT,
+    payload: {
+      id,
+      newContent,
+    },
   };
 }
 
@@ -38,7 +41,7 @@ export function UpdateTodoPriority(
   priority: "high" | "medium" | "low"
 ) {
   return {
-    type: UPDATETODOPRIORITY,
+    type: UPDATE_TODO_PRIORITY,
     payload: {
       id,
       priority,
