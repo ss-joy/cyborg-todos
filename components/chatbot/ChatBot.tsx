@@ -4,7 +4,7 @@ import { BotIcon } from "lucide-react";
 
 function ChatBot() {
   return (
-    <div className="mt-16 m-0 p-0 relative w-[100%] min-[1183px]:mt-0 border-2 min-[1183px]:w-[40%]">
+    <div className="mt-16 m-0 p-2 relative w-[100%] min-[1183px]:mt-0 min-[1183px]:w-[40%]">
       <h2 className="text-slate-600 text-3xl font-bold mb-3">
         Feeling lazy? Let our AI do it for you !!
       </h2>

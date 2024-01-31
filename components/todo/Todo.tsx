@@ -6,6 +6,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import TodoPriority from "./TodoPriority";
 import EditTodoModal from "./EditTodoModal";
+import { toast } from "sonner";
 type TodoType = {
   todo: Todo;
 };
@@ -14,10 +15,18 @@ export default function Todo({
 }: TodoType): JSX.Element {
   const dispatch = useDispatch();
   const updateTodoStatus = (id: string) => {
+    toast.warning(
+      `${
+        status !== "completed"
+          ? "todo marked as completed!!!"
+          : "todo marked as pending"
+      }`
+    );
     dispatch(UpdateTodoStatus(id));
   };
   const handleDelete = (id: string) => {
     dispatch(DeleteTodo(id));
+    toast.error("todo is deleted!!!");
   };
   return (
     <li className="flex items-center relative shadow-md rounded-md my-4 p-2 border-2 border-slate-400">

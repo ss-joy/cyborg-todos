@@ -14,6 +14,7 @@ import { Button } from "../ui/button";
 import { PenIcon } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { UpdateContent } from "@/redux/todos/action-creators";
+import { toast } from "sonner";
 type EditTodoModalProps = {
   id: string;
 };
@@ -24,6 +25,7 @@ function EditTodoModal({ id }: EditTodoModalProps) {
     setContent(e.target.value);
   }
   function updateContent() {
+    toast.success("todo changed !!");
     dispatch(UpdateContent(id, content));
   }
   return (
