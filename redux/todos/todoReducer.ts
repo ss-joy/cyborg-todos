@@ -1,6 +1,7 @@
 import {
   ADD,
   DELETE,
+  REPLACE_TODOS,
   UPDATE_CONTENT,
   UPDATE_TODO_PRIORITY,
   UPDTAE_STATUS,
@@ -9,7 +10,7 @@ import { v4 } from "uuid";
 export type Todo = {
   id: string;
   text: string;
-  priority: "high" | "medium" | "low";
+  priority: "high" | "medium" | "low" | "";
   status: "pending" | "completed";
 };
 type StateType = {
@@ -18,21 +19,21 @@ type StateType = {
 const initialState: StateType = {
   todos: [
     {
-      id: "asdasdasdasdadsaodas8ds",
-      text: "sdsdd",
-      priority: "high",
+      id: "e50747e1-7129-49e4-8d84-2208892b31e0",
+      text: "Eat a lot of burgers.",
+      priority: "",
       status: "completed",
     },
     {
-      id: "asdasudp8ausd80asd",
-      text: "sdasijdsahduhusahudhsd",
-      priority: "low",
+      id: "f6500b01-dd3d-4b3d-bd07-9ec3a54cd522",
+      text: "Call mom at 9 am",
+      priority: "",
       status: "pending",
     },
     {
-      id: "asdasudp8ausd80asd3243",
-      text: "yoyoyoyo",
-      priority: "medium",
+      id: "df3f48d2-f12f-4bde-a1ce-c2a3ff66f7dd",
+      text: "Do my homework before evening",
+      priority: "",
       status: "pending",
     },
   ],
@@ -75,7 +76,10 @@ export function todoReducer(state: StateType = initialState, action) {
         } else if (action.payload.id === todo.id) {
           return {
             ...todo,
-            priority: action.payload.priority,
+            priority:
+              action.payload.priority === todo.priority
+                ? ""
+                : action.payload.priority,
           };
         }
       });
@@ -103,7 +107,13 @@ export function todoReducer(state: StateType = initialState, action) {
         ...state,
         todos: updatedTodossss,
       };
+    case REPLACE_TODOS:
+      return {
+        ...state,
+        todos: action.payload,
+      };
     default:
       return state;
   }
 }
+function addTodo() {}

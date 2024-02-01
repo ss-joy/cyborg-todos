@@ -1,0 +1,29 @@
+{
+  "todos": [
+    {
+      "id": "e50747e1-7129-49e4-8d84-2208892b31e0",
+      "text": "Eat a lot of burgers.",
+      "priority": "",
+      "status": "completed"
+    },
+    {
+      "id": "f6500b01-dd3d-4b3d-bd07-9ec3a54cd522",
+      "text": "Call mom at 9 am",
+      "priority": "",
+      "status": "pending"
+    },
+    {
+      "id": "f6500b01-dd3d-4b3d-bd07-9ec3a54cd522",
+      "text": "sleep till morning",
+      "priority": "",
+      "status": "pending"
+    },
+    {
+      "id": "df3f48d2-f12f-4bde-a1ce-c2a3ff66f7dd",
+      "text": "Do my homework before evening",
+      "priority": "",
+      "status": "pending"
+    }
+  ],
+  "instructions": "Mark 'sleep till morning' as high priority"
+}

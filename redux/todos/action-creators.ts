@@ -1,6 +1,7 @@
 import {
   ADD,
   DELETE,
+  REPLACE_TODOS,
   UPDATE_CONTENT,
   UPDATE_TODO_PRIORITY,
   UPDTAE_STATUS,
@@ -44,5 +45,11 @@ export function UpdateTodoPriority(id: string, priority: Todo["priority"]) {
       id,
       priority,
     },
+  };
+}
+export function replaceTodos(todos: Todo[]) {
+  return {
+    type: REPLACE_TODOS,
+    payload: todos,
   };
 }
