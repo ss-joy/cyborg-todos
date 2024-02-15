@@ -53,3 +53,11 @@ export function replaceTodos(todos: Todo[]) {
     payload: todos,
   };
 }
+
+export type TodoReducerActionType =
+  | ReturnType<typeof Add>
+  | ReturnType<typeof DeleteTodo>
+  | ReturnType<typeof UpdateTodoStatus>
+  | ReturnType<typeof UpdateContent>
+  | ReturnType<typeof UpdateTodoPriority>
+  | ReturnType<typeof replaceTodos>;

@@ -1,3 +1,4 @@
+import { TodoReducerActionType } from "./action-creators";
 import {
   ADD,
   DELETE,
@@ -38,8 +39,10 @@ const initialState: StateType = {
     },
   ],
 };
-//@ts-ignore
-export function todoReducer(state: StateType = initialState, action) {
+export function todoReducer(
+  state: StateType = initialState,
+  action: TodoReducerActionType
+) {
   switch (action.type) {
     case UPDTAE_STATUS:
       const newTodos = state.todos.map((todo) => {
